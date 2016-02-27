@@ -47,17 +47,17 @@ module.exports = function(grunt) {
       },
       css: {
         files: {
-          "build/mosaico.css": "src/css/app_standalone.less",
-          "build/mosaico-material.css": "src/css/app_standalone_material.less"
+          "build/app.css": "src/css/app_standalone.less",
+          "build/app-material.css": "src/css/app_standalone_material.less"
         }
       }
     },
 
     postcss: {
       options: {
-        map: {
-          inline: false /* , prev: 'build/app.css.map' */
-        },
+        //map: {
+        //  inline: false /* , prev: 'build/app.css.map' */
+        //},
         diff: false,
         processors: [
           require('autoprefixer-core')({
@@ -67,12 +67,12 @@ module.exports = function(grunt) {
         ]
       },
       dist: {
-        src: 'build/mosaico.css',
-        dest: 'dist/mosaico.min.css'
+      	src: 'build/app.css',
+      	dest: 'dist/app.min.css'
       },
       material: {
-        src: 'build/mosaico-material.css',
-        dest: 'dist/mosaico-material.min.css'
+      	src: 'build/app-material.css',
+        dest: 'dist/app-material.min.css'
       }
     },
 
@@ -82,23 +82,23 @@ module.exports = function(grunt) {
           browserifyOptions: {
             standalone: 'Mosaico'
           },
-          watch: true,
+          watch: false,
         },
         files: {
-          'build/mosaico.js': ['./src/js/app.js', './build/templates.js']
+          'build/app.js': ['./src/js/app.js', './build/templates.js']
         }
       },
       main: {
         options: {
           browserifyOptions: {
-            debug: true,
+          	debug: false,
             standalone: 'Mosaico'
           },
           transform: ['uglifyify'],
-          watch: true,
+          watch: false,
         },
         files: {
-          'build/mosaico.debug.js': ['./src/js/app.js', './build/templates.js']
+          'build/app.min.js': ['./src/js/app.js', './build/templates.js']
         }
       }
     },
@@ -106,10 +106,10 @@ module.exports = function(grunt) {
     exorcise: {
       main: {
         options: {
-          bundleDest: 'dist/mosaico.min.js'
+          bundleDest: 'dist/app.min.js'
         },
         files: {
-          'dist/mosaico.min.js.map': ['build/mosaico.debug.js'],
+          'dist/app.min.js.map': ['build/app.min.js'],
         }
       }
     },
@@ -232,8 +232,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('js', ['combineKOTemplates', 'browserify', 'exorcise']);
   grunt.registerTask('css', ['less', 'postcss']);
-  grunt.registerTask('server', ['express', 'watch', 'express-keepalive']);
+  //grunt.registerTask('server', ['express', 'watch', 'express-keepalive']);
   grunt.registerTask('build', ['bowercopy', 'copy', 'jshint', 'js', 'css']);
-  grunt.registerTask('default', ['build', 'server']);
+  grunt.registerTask('default', ['build'/*, 'server'*/]);
   grunt.registerTask('test', ['jasmine_node']);
 };
