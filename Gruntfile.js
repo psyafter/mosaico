@@ -48,7 +48,9 @@ module.exports = function(grunt) {
       css: {
         files: {
           "build/app.css": "src/css/app_standalone.less",
-          "build/app-material.css": "src/css/app_standalone_material.less"
+          "build/app-material.css": "src/css/app_standalone_material.less",
+          "dist/app.css": "src/css/app_standalone.less",
+          "dist/app-material.css": "src/css/app_standalone_material.less"
         }
       }
     },
@@ -85,7 +87,8 @@ module.exports = function(grunt) {
           watch: false,
         },
         files: {
-          'build/app.js': ['./src/js/app.js', './build/templates.js']
+          'build/app.js': ['./src/js/app.js', './build/templates.js'],
+          'dist/app.js': ['./src/js/app.js', './build/templates.js']
         }
       },
       main: {
@@ -98,7 +101,8 @@ module.exports = function(grunt) {
           watch: false,
         },
         files: {
-          'build/app.min.js': ['./src/js/app.js', './build/templates.js']
+          'build/app.min.js': ['./src/js/app.js', './build/templates.js'],
+          'dist/app.min.js': ['./src/js/app.js', './build/templates.js']
         }
       }
     },
@@ -124,7 +128,7 @@ module.exports = function(grunt) {
         tasks: ['combineKOTemplates']
       },
       exorcise: {
-        files: ['build/mosaico.debug.js'],
+        files: ['build/app.debug.js'],
         tasks: ['exorcise']
       },
       web: {
@@ -230,9 +234,9 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask('js', ['combineKOTemplates', 'browserify', 'exorcise']);
+  grunt.registerTask('js', ['combineKOTemplates', 'browserify'/*, 'exorcise'*/]);
   grunt.registerTask('css', ['less', 'postcss']);
-  //grunt.registerTask('server', ['express', 'watch', 'express-keepalive']);
+  grunt.registerTask('server', ['express', 'watch', 'express-keepalive']);
   grunt.registerTask('build', ['bowercopy', 'copy', 'jshint', 'js', 'css']);
   grunt.registerTask('default', ['build'/*, 'server'*/]);
   grunt.registerTask('test', ['jasmine_node']);
