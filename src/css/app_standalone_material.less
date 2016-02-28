@@ -1,10 +1,11 @@
 @import 'app_standalone.less';
 
-@accent-color: #900000; // #A01020; // #ff9800;
+@accent-color: #6498cd; // #900000; // #A01020; // #ff9800;
 @background-color: #eeeeee;
+@text-color: #3f7ab6;
 // @link-color: #ff9800;
 // @link-color: #ff5722; // #ea1c0d;
-@link-color: #ff5722; // #ea1c0d;
+@link-color: #6498cd; //#ff5722; // #ea1c0d;
 
 @font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, "Nimbus Sans L", "Liberation Sans", Arimo, sans-serif;
 @standard-border-radius: 2px;
@@ -44,6 +45,20 @@
   padding: 4px;
   padding-bottom: 2px;
   box-shadow: 1px 1px 3px @shadow-color;
+}
+.cms_rtl #main-edit-area .tool {
+  margin: 10px 0 10px 7px;
+}
+.cms_rtl #main-edit-area .tool.inline {
+  margin: 0 0 0 7px;
+}
+.cms_rtl #main-edit-area .tool.with_button_dropdown_split {
+  padding-right: 0;
+  padding-left: 1.2em;
+}
+.cms_rtl #main-edit-area .tool.with_button_dropdown_split.big {
+  padding-right: 0;
+  padding-left: 1.8em;
 }
 
 #toolbar, #preview-toolbar {

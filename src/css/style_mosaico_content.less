@@ -146,21 +146,42 @@
 #main-edit-area .tool:hover {
   background-color: @mosaico-button-background-color-hover;
 }
-#main-edit-area .tools .tool.handle {
+.cms_ltr #main-edit-area .tools .tool.handle {
   float: left;
   margin-left: 16px;
   cursor: move;
 }
-#main-edit-area .tools .tool.moveup,
-#main-edit-area .tools .tool.movedown {
+.cms_rtl #main-edit-area .tools .tool.handle {
+  float: right;
+  margin-right: 16px;
+  cursor: move;
+}
+.cms_ltr #main-edit-area .tools .tool.moveup,
+.cms_ltr #main-edit-area .tools .tool.movedown {
   float: left;
   margin-left: 3px;
 }
+.cms_rtl #main-edit-area .tools .tool.moveup,
+.cms_rtl #main-edit-area .tools .tool.movedown {
+  float: right;
+  margin-right: 3px;
+}
 
-#main-edit-area .tools .tool.delete,
-#main-edit-area .tools .tool.clone {
+.cms_ltr #main-edit-area .tools .tool.delete,
+.cms_ltr #main-edit-area .tools .tool.clone {
   float: right;
   margin-left: 3px;
+}
+.cms_rtl #main-edit-area .tools .tool.delete,
+.cms_rtl #main-edit-area .tools .tool.clone {
+  float: left;
+  margin-right: 3px;
+}
+.cms_ltr #main-edit-area .tools .tool.delete {
+  margin-right: 16px;
+}
+.cms_rtl #main-edit-area .tools .tool.delete {
+  margin-left: 16px;
 }
 
 #main-edit-area .tools .tool.delete {
@@ -175,6 +196,9 @@
   bottom: 16px;
   width: 100%;
   text-align: left;
+}
+.cms_rtl #main-edit-area .midtools {
+  text-align: right;
 }
 #main-edit-area .img-wysiwyg:hover .midtools {
   // display: block;
@@ -201,21 +225,30 @@
   visibility: hidden;
   position: absolute;
   top: 0;
-  right: 0;
   padding: 2px;
   font-family: @font-family;
   font-size: 12px;
   background-color: rgba(128,128,128,.5);
   color: white;  
 }
+.cms_ltr #main-edit-area .img-wysiwyg .img-size {
+  right: 0;
+}
+.cms_rtl #main-edit-area .img-wysiwyg .img-size {
+  left: 0;
+}
 
 #main-edit-area .img-wysiwyg:hover .img-size {
   visibility: visible;
 }
 
-#main-edit-area .midtools .tool {
+.cms_ltr #main-edit-area .midtools .tool {
   z-index: 20;
   margin-left: 8px;
+}
+.cms_rtl #main-edit-area .midtools .tool {
+  z-index: 20;
+  margin-right: 8px;
 }
 
 #main-edit-area .tools {
@@ -236,6 +269,11 @@
 #main-wysiwyg-area {
   backface-visibility: hidden;
   background-color: white;
+}
+#main-wysiwyg-area replacedhead,
+#main-wysiwyg-area replacedbody{
+  direction:ltr;
+  text-align:left;
 }
 
 #main-edit-area, #main-toolbox, #main-preview {

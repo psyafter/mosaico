@@ -237,6 +237,10 @@ a[disabledhref]:-moz-read-write {
   right: 0;
   overflow: hidden;
 }
+.cms_rtl #page {
+	direction:rtl;
+	text-align:right;
+}
 
 #main-edit-area {
   left: 0;
@@ -266,12 +270,21 @@ a[disabledhref]:-moz-read-write {
   width: @leftsidebar-width;
   box-shadow: 0 0 10px @mosaico-shadow-color, 0 0 5px @mosaico-shadow-color;
 }
+.cms_rtl #main-toolbox {
+  left: auto;
+  right: 0;
+}
 .withToolbox #main-toolbox {
   display: block;
 }
 .withToolbox #main-edit-area,
 .withToolbox #toolbar {
   left: @leftsidebar-width;
+}
+.cms_rtl .withToolbox #main-edit-area,
+.cms_rtl .withToolbox #toolbar {
+  left: 0;
+  right: @leftsidebar-width;
 }
 
 #main-preview {
@@ -282,11 +295,18 @@ a[disabledhref]:-moz-read-write {
   //padding: 10px;
   overflow: hidden;
 }
+.cms_rtl #main-preview {
+  right: auto;
+  left: 0;
+}
 .withPreviewFrame #main-preview {
   display: block;
 }
-.withPreviewFrame #main-edit-area {
+.cms_ltr .withPreviewFrame #main-edit-area {
   right: (@rightsidebar-width + 5px);
+}
+.cms_rtl .withPreviewFrame #main-edit-area {
+  left: (@rightsidebar-width + 5px);
 }
 
 #main-edit-area:before,
@@ -326,6 +346,9 @@ a[disabledhref]:-moz-read-write {
   -webkit-transform: translate3d(0,0,0);
   // overflow-x: hidden;
 }
+#main-edit-area .isdraggingimg .ui-droppable.img-wysiwyg:before {
+  animation: none;
+}
 
 /****************************************************************************************************************************
  * GENERIC UTILITIES: 
@@ -354,9 +377,13 @@ a[disabledhref]:-moz-read-write {
 .ui-draggable-dragging {
   z-index: 10000;
 }
-.ui-draggable-dragging.sortable-placeholder {
+.cms_ltr .ui-draggable-dragging.sortable-placeholder {
   top: 0 !important;
   left: 0 !important;
+}
+.cms_rtl .ui-draggable-dragging.sortable-placeholder {
+  top: 0 !important;
+  right: 0 !important;
 }
 
 
@@ -424,6 +451,9 @@ body > .ui-tooltip {
   z-index: 9999;
   max-width: 300px;
   box-shadow: 0px 0px 5px #AAA;
+}
+body.cms_rtl > .ui-tooltip {
+  direction:rtl;
 }
 
 .ui-helper-hidden-accessible {

@@ -1,6 +1,74 @@
+html { height: initial; overflow-y: initial;}
+.scms_pstbck, .scms_pstbckprcs { display:none;}
+
 @import "../../bower_components/font-awesome/less/font-awesome.less";
+@import 'fa-rtl.less';
+
+body.cms_rtl > #contextmenu-help {
+direction: rtl;
+}
+
 @import 'style_mosaico.less';
 
 @fa-font-path: "fa/fonts";
 
 @import (less) "../../bower_components/toastr/toastr.css";
+
+.cms_rtl .toast-close-button {
+  right: auto;
+  left: -0.3em;
+  float: left;
+}
+.cms_rtl .toast-top-center,
+.cms_rtl .toast-bottom-center,
+.cms_rtl .toast-top-full-width,
+.cms_rtl .toast-bottom-full-width {
+  right: auto;
+  left: 0;
+}
+.cms_rtl .toast-top-left,
+.cms_rtl .toast-bottom-left {
+  left: auto;
+  right: 12px;
+}
+.cms_rtl .toast-top-right,
+.cms_rtl .toast-bottom-right {
+  right: auto;
+  left: 12px;
+}
+.cms_rtl #toast-container * {
+  direction:rtl;
+  text-align:right;
+}
+.cms_rtl #toast-container > div {
+  padding: 15px 50px 15px 15px;
+  background-position: right 15px center;
+}
+.cms_rtl .toast-progress {
+  left: auto;
+  right: 0;
+}
+/*Responsive Design*/
+@media all and (max-width: 240px) {
+  .cms_rtl #toast-container > div {
+    padding: 8px 50px 8px 8px;
+  }
+  .cms_rtl #toast-container .toast-close-button {
+    right: auto;
+    left: -0.2em;
+  }
+}
+@media all and (min-width: 241px) and (max-width: 480px) {
+  .cms_rtl #toast-container > div {
+    padding: 8px 50px 8px 8px;
+  }
+  .cms_rtl #toast-container .toast-close-button {
+    right: auto;
+    left: -0.2em;
+  }
+}
+@media all and (min-width: 481px) and (max-width: 768px) {
+  .cms_rtl #toast-container > div {
+    padding: 15px 50px 15px 15px;
+  }
+}
