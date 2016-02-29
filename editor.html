@@ -31,15 +31,32 @@ $(function() {
   }
   // var basePath = window.location.href.substr(0, window.location.href.lastIndexOf('/')).substr(window.location.href.indexOf('/','https://'.length));
   var basePath = window.location.href.substr(0, window.location.href.lastIndexOf('/'));
-  var plugins;
-  // A basic plugin that expose the "viewModel" object as a global variable.
+  var plugins = [
+	  function (vm) {
+	  	window.viewModel = vm;
+	  	vm.logoPath = null;
+	  	vm.logoUrl = '#';
+	  	//if ($('.txtRTL').val() == '1') {
+	  	//	vm.content().dir('rtl');
+	  	//	vm.content().defaultAlign('right');
+	  	//	vm.content().oppositeAlign('left');
+	  	//}
+	  	//else {
+	  	//	vm.content().dir('ltr');
+	  	//	vm.content().defaultAlign('left');
+	  	//	vm.content().oppositeAlign('right');
+	  	//}
+	  }
+  ];
+	// A basic plugin that expose the "viewModel" object as a global variable.
   // plugins = [function(vm) {window.viewModel = vm;}];
+  var strings = $.ajax('dist/lang/mosaico-he.json', { type: "GET", async: false }).responseText;
+  strings = $.parseJSON(strings);
   var ok = Mosaico.init({
+  	strings: strings,
     imgProcessorBackend: basePath+'/img/',
-    emailProcessorBackend: basePath+'/dl/',
+    emailProcessorBackend: basePath + '/dl/',
     titleToken: "MOSAICO Responsive Email Designer",
-    logoPath: null,
-    logoUrl: '#',
     fileuploadConfig: {
       url: basePath+'/upload/',
       // messages??
@@ -56,7 +73,7 @@ $(function() {
     <link rel="stylesheet" href="dist/vendor/notoregular/stylesheet.css" />
     <link rel="stylesheet" href="dist/vendor/evol.colorpicker.min.css" /> <!-- 2k -->
   </head>
-  <body class="mo-standalone cms_ltr">
+  <body class="mo-standalone cms_rtl">
 
 
   </body>

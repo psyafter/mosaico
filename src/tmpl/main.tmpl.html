@@ -22,8 +22,9 @@
     </span>
 
     <input id="previewFrameToggle" type="checkbox" data-bind="checked: $root.showPreviewFrame, button: { refreshOn: $root.showPreviewFrame, icons: { primary: 'fa fa-fw fa-tablet', secondary: null }, text: false, label: $root.t('Preview') }"><label title="Show live preview" for="previewFrameToggle" data-bind="attr: { title: $root.t('Show live preview') }">PREVIEW</label></input>
-
-    <!-- ko if: $root.debug -->
+  	<label><a title="Save template" href="#" onclick="scms.lm.md.save(); return false;" data-bind="attr: { title: $root.t('Save template') }, clickBubble: false, button: { icons: { primary: 'fa fa-fw fa-save', secondary: null }, label: $root.t('Save'), text: true }">save template</a></label>
+    
+	<!-- ko if: $root.debug -->
     <a href="#" data-bind="click: $root.export, clickBubble: false, button: { label: 'export', text: true }">EXPORT</a>
     <input type="checkbox" data-bind="checked: $root.debug" /> debug
     <a href="#" data-bind="click: $root.loadDefaultBlocks, clickBubble: false, button: { icons: { primary: 'fa fa-fw fa-upload' }, label: 'Default', text: true }">LOAD BLOCKS</a>
@@ -35,8 +36,9 @@
     </span>
 
     <div class="rightButtons">
+    <!-- ko if: false -->
     <!-- ko if: typeof $root.save !== 'undefined' -->
-    <a title="Save template" href="#" data-bind="attr: { title: $root.t('Save template') }, click: $root.save.execute, clickBubble: false, button: { disabled: !$root.save.enabled(), icons: { primary: 'fa fa-fw fa-cloud-upload' }, label: $root.t($root.save.name), text: true }">SALVA</a>
+    <a title="Save template" href="#" data-bind="attr: { title: $root.t('Save template') }, click: $root.save.execute, clickBubble: false, button: { disabled: !$root.save.enabled(), icons: { primary: 'fa fa-fw fa-cloud-upload' }, label: $root.t($root.save.name), text: true }">SAVE</a>
     <!-- /ko -->
     <!-- ko if: typeof $root.test !== 'undefined' -->
     <a title="Show preview and send test" href="#" data-bind="attr: { title: $root.t('Show preview and send test') }, click: $root.test.execute, clickBubble: false, button: { disabled: !$root.test.enabled(), icons: { primary: 'fa fa-fw fa-paper-plane' }, label: $root.t($root.test.name), text: true }">TEST</a>
@@ -48,6 +50,7 @@
     <input type="hidden" name="html" id="downloadHtmlTextarea" />
     <a title="Download template" href="#" data-bind="attr: { title: $root.t('Download template') }, click: $root.download.execute, clickBubble: false, button: { disabled: !$root.download.enabled(), icons: { primary: 'fa fa-fw fa-download' }, label: $root.t($root.download.name), text: true }">DOWNLOAD</a>
     </form>
+    <!-- /ko -->
     <!-- /ko -->
     </div>
   </div>
