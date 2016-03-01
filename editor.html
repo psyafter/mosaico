@@ -22,6 +22,7 @@
     <script src="dist/vendor/evol.colorpicker.min.js"></script>
     <script src="dist/vendor/tinymce.min.js"></script>
 
+  	<script src="dist/lang/templates.js"></script>
     <script src="dist/app.js?v=0.13"></script>
     <script>
 $(function() {
@@ -34,27 +35,45 @@ $(function() {
   var plugins = [
 	  function (vm) {
 	  	window.viewModel = vm;
+	  	vm.lang = 'he';
 	  	vm.logoPath = null;
 	  	vm.logoUrl = '#';
 	  	//if ($('.txtRTL').val() == '1') {
-	  	//	vm.content().dir('rtl');
-	  	//	vm.content().defaultAlign('right');
-	  	//	vm.content().oppositeAlign('left');
+	  		vm.content().dir('rtl');
+	  		vm.content().defaultAlign('right');
+	  		vm.content().oppositeAlign('left');
 	  	//}
 	  	//else {
 	  	//	vm.content().dir('ltr');
 	  	//	vm.content().defaultAlign('left');
 	  	//	vm.content().oppositeAlign('right');
 	  	//}
+	  },
+	  function (vm) {
+	  	vm.ut = function(category, key) {
+	  		var lang = viewModel.lang;
+	  		var res = key;
+	  		try {
+	  			res = lang == 'he' ? __mtrns_he[key] : lang == 'ru' ? __mtrns_ru[key] : __mtrns_en[key];
+	  			if (typeof (res) == 'undefined')
+	  				res = __mtrns_en[key];
+	  			if (typeof (res) != 'undefined')
+	  				return res;
+	  		}
+	  		catch (e) { }
+	  		return key;
+	    };
 	  }
   ];
-	// A basic plugin that expose the "viewModel" object as a global variable.
+  // A basic plugin that expose the "viewModel" object as a global variable.
   // plugins = [function(vm) {window.viewModel = vm;}];
   var strings = $.ajax('dist/lang/mosaico-he.json', { type: "GET", async: false }).responseText;
   strings = $.parseJSON(strings);
   var ok = Mosaico.init({
+  	lang: 'he',
   	strings: strings,
-    imgProcessorBackend: basePath+'/img/',
+  	template: '../templates/t1/tmpl.html',
+  	imgProcessorBackend: basePath + '/img/',
     emailProcessorBackend: basePath + '/dl/',
     titleToken: "MOSAICO Responsive Email Designer",
     fileuploadConfig: {
@@ -73,7 +92,7 @@ $(function() {
     <link rel="stylesheet" href="dist/vendor/notoregular/stylesheet.css" />
     <link rel="stylesheet" href="dist/vendor/evol.colorpicker.min.css" /> <!-- 2k -->
   </head>
-  <body class="mo-standalone cms_rtl">
+  <body class="mo-standalone cms_ltr">
 
 
   </body>

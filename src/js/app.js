@@ -95,7 +95,7 @@ var start = function(options, templateFile, templateMetadata, jsorjson, customEx
     }
   };
 
-  var extensions = [addUndoStackExtensionMaker(performanceAwareCaller), colorPlugin, simpleTranslationPlugin];
+  var extensions = [simpleTranslationPlugin, addUndoStackExtensionMaker(performanceAwareCaller), colorPlugin];
   if (typeof customExtensions !== 'undefined')
     for (var k = 0; k < customExtensions.length; k++) extensions.push(customExtensions[k]);
   extensions.push(fileUploadMessagesExtension);
@@ -135,9 +135,10 @@ var init = function(options, customExtensions) {
   // Loading from configured template or configured metadata
   if (options && (options.template || options.data)) {
     if (options.data) {
-      var data = JSON.parse(options.data);
-      start(options, undefined, data.metadata, data.content, customExtensions);
-    } else {
+      //var data = JSON.parse(options.data);
+      //start(options, undefined, data.metadata, data.content, customExtensions);
+      start(options, undefined, options.data.metadata, options.data.content, customExtensions);
+  } else {
       start(options, options.template, undefined, undefined, customExtensions);
     }
     // Loading from LocalStorage (if url hash has a 7chars key)
