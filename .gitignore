@@ -8,4 +8,4 @@ build
 dist
 npm-debug.log
 Mosaico.sln
-.vs/config/applicationhost.config
+.vs/**
