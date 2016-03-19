@@ -39,9 +39,12 @@ $(function() {
 	  	vm.logoPath = null;
 	  	vm.logoUrl = '#';
 	  	//if ($('.txtRTL').val() == '1') {
-	  		vm.content().dir('rtl');
-	  		vm.content().defaultAlign('right');
-	  		vm.content().oppositeAlign('left');
+	  		if (vm.content().dir)
+	  			vm.content().dir('rtl');
+	  		if (vm.content().defaultAlign)
+	  			vm.content().defaultAlign('right');
+	  		if (vm.content().oppositeAlign)
+	  			vm.content().oppositeAlign('left');
 	  	//}
 	  	//else {
 	  	//	vm.content().dir('ltr');
@@ -72,7 +75,8 @@ $(function() {
   var ok = Mosaico.init({
   	lang: 'he',
   	strings: strings,
-  	template: '../templates/t1/tmpl.html',
+  	//template: '../templates/t1/tmpl.html',
+  	template: '../templates/tutorial/template-tutorial.html',
   	imgProcessorBackend: basePath + '/img/',
     emailProcessorBackend: basePath + '/dl/',
     titleToken: "MOSAICO Responsive Email Designer",
@@ -92,7 +96,7 @@ $(function() {
     <link rel="stylesheet" href="dist/vendor/notoregular/stylesheet.css" />
     <link rel="stylesheet" href="dist/vendor/evol.colorpicker.min.css" /> <!-- 2k -->
   </head>
-  <body class="mo-standalone cms_ltr">
+  <body class="mo-standalone cms_rtl">
 
 
   </body>
