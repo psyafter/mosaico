@@ -95,6 +95,7 @@ module.exports = function(grunt) {
         options: {
           browserifyOptions: {
           	debug: false,
+          	fullPaths: false,
             standalone: 'Mosaico'
           },
           transform: ['uglifyify'],
