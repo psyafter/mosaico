@@ -12,7 +12,11 @@ var render = function() {
 
   timeout = undefined;
 
-  if (typeof tinymce.activeEditor !== 'undefined' && typeof tinymce.activeEditor.theme !== 'undefined' && typeof tinymce.activeEditor.theme.panel !== 'undefined' && typeof tinymce.activeEditor.theme.panel.visible !== 'undefined' && typeof tinymce.activeEditor.theme.panel._visible !== 'undefined' && tinymce.activeEditor.theme.panel._visible) {
+  if (typeof tinymce.activeEditor !== 'undefined' && tinymce.activeEditor !== null &&
+      typeof tinymce.activeEditor.theme !== 'undefined' && tinymce.activeEditor.theme !== null && 
+      typeof tinymce.activeEditor.theme.panel !== 'undefined' && tinymce.activeEditor.theme.panel !== null &&
+      typeof tinymce.activeEditor.theme.panel.visible !== 'undefined'&& 
+      typeof tinymce.activeEditor.theme.panel._visible !== 'undefined' && tinymce.activeEditor.theme.panel._visible) {
     // @see FloatPanel.js function repositionPanel(panel)
     // First condition group is for Tinymce 4.0/4.1
     // Second condition group is for Tinymce 4.2/4.3 where "._property" are now available as ".state.get('property')".
