@@ -110,9 +110,8 @@
       frameTheme:preview { -ko-background-color: @[backgroundColor] }
       template preheaderText { label: label_preheader; }
 
-      template { label: label_page; theme: frameTheme ;properties:  preheaderVisible=true; version: 1.0.5; }
+      template { label: label_page; theme: frameTheme ;properties:  preheaderVisible=true; version: 1.0.6; }
 
-      footerBlock unsubscribeLinkStyle { label: label_unsubscribe;  }
       footerBlock { label: label_unsubscribe_block; theme: frameTheme }
       
       socialBlock fbVisible { label: Facebook; }
@@ -161,20 +160,17 @@
 
       imageBlock longTextStyle {
         label: label_alt_text;
-        help: help_image_alt_text;
       }
       imageBlock { label: label_image; properties: gutterVisible=false; variant: gutterVisible; theme: contentTheme }
 
       doubleImageBlock longTextStyle {
         label: label_alt_text;
-        help: help_image_alt_text;
       }
       doubleImageBlock { label: label_2_images_gallery_block; properties: gutterVisible=false; variant: gutterVisible; theme: contentTheme }
 
       tripleImageBlock longTextStyle {
         label: label_alt_text;
-        help: help_image_alt_text;
-      }
+      }<!-- footerBlock -->
       tripleImageBlock { label: label_3_images_gallery_block;properties:gutterVisible=false;variant:gutterVisible; theme: contentTheme}
 
       buttonBlock { label: label_button_block; theme: contentTheme}
