@@ -1,4 +1,4 @@
-﻿{
+﻿ {
   "Download": "Скачать",
   "Test": "Тест",
   "Save": "Сохранить",
@@ -30,8 +30,6 @@
   "Save template": "Сохранить шаблон",
   "Saved model is obsolete": "Сохраненная модель устарела",
   "<p>The saved model has been created with a previous, non completely compatible version, of the template</p><p>Some content or style in the model <b>COULD BE LOST</b> if you will <b>save</b></p><p>Contact us for more informations!</p>": "<p>Сохраненная модель была создана с предыдущей, несовместимой версией шаблона</p><p>Некоторые содержание или стили в модели <b>МОГУТ БЫТЬ УТЕРЯНЫ</b> при  <b>сохранение</b></p><p>Обратитесь в суппорт!</p>",
-  "Fake image editor": "Fake image editor",
-  "<p>Fake image editor</p>": "<p>Fake image editor</p>",
   "Blocks": "Блоки",
   "Blocks ready to be added to the template": "Блоки готовые к добавлению в шаблон",
   "Content": "Контент",
@@ -86,5 +84,9 @@
   "File upload aborted": "Загрузка файла прервана",
   "Failed to resize image": "Не удалось изменить размер изображения",
   "Unexpected upload error": "Непредвиденная щшибка загрузки",
-  "Unexpected error listing files": "Непредвиденная ошибка листинга файлов"
+  "Unexpected error listing files": "Непредвиденная ошибка листинга файлов",
+  "__current__ of __total__": "__current__ из __total__",
+  "Select from gallery": "Выбрать из галереи",
+  "__current__ of __total__": "__current__ מתוך __total__",
+  "Select from gallery": "בחר מתוך גלריה"
 }

@@ -90,10 +90,6 @@
 }
 
 
-#main-edit-area #main-wysiwyg-area:not(.isdragging):not(.isdraggingimg) .editable {
-  .makeSelectable(10px, ~'.selected', 0, ~' .mo-blockselectionhelper');
-}
-
 #main-edit-area .isdragging .sortable-blocks-edit > div:not(.sortable-placeholder) + div:not(.sortable-placeholder):not(.ui-sortable-helper):not(.ui-draggable-dragging):before,
 #main-edit-area .isdragging .sortable-blocks-edit > div:not(.sortable-placeholder):not(.ui-sortable-helper):not(.ui-draggable-dragging):first-child:before,
 #main-edit-area .isdragging .sortable-blocks-edit > div:not(.sortable-placeholder):not(.ui-sortable-helper):not(.ui-draggable-dragging):last-child:after {
@@ -136,7 +132,7 @@
   padding: 3px;
   padding-bottom: 2px;
   margin: 0;
-  min-height: auto;
+  min-height: 25px;
   
   box-shadow: 0 0 5px @mosaico-button-shadow-color;
   
@@ -197,7 +193,7 @@
   z-index: 30; 
   position: absolute; 
   bottom: 16px;
-  width: 100%;
+  // width: 100%;
   text-align: left;
 }
 .cms_rtl #main-edit-area .midtools {
@@ -245,6 +241,13 @@
   visibility: visible;
 }
 
+#main-edit-area .midtools {
+  margin-left: 4px;
+  .tool {
+    // z-index: 20;
+    margin-left: 4px;
+  }
+}
 .cms_ltr #main-edit-area .midtools .tool {
   z-index: 20;
   margin-left: 8px;
@@ -285,6 +288,12 @@
   bottom: 0;
 }
 
+@keyframes opacityAnimation {
+  0%   { opacity: 0.6; }
+  50%  { opacity: 0.3; }
+  100% { opacity: 0.6; }
+}
+
 #main-wysiwyg-area {
   // Prevent images inside A tags to show "hand cursor"
   a[href] {
@@ -295,17 +304,30 @@
     cursor: text !important;
   }
 
-  // prevent some contenteditable to collapse
-  // TODO maybe we should call this on every inline element
-  span, a {
-    &[contenteditable]:empty {
+  // Prevent clicking and show loading whily tinymce is being initialized
+  .wysiwyg-loading {
+    pointer-events: none;
+    animation: opacityAnimation 2s infinite;
+  }
+
+  // we force inline editable elements to be shown as inline-block in editing
+  // there are many issues with editing inline (non inline-block) elements so 
+  // this is a sensible behaviour
+  span, a, b, i, cite, code, em, label, small, strong, sub, sup, q {
+    &[contenteditable] {
       display: inline-block;
-      min-width: 50px;
     }
   }
-  div, p, td {
-    &[contenteditable] {
-      min-width: 50px;
+  // Force a minimum width for any contenteditable, to prevent it from collapsing
+  // and becoming "non-selectable" with clicks/touches (we can't expect people to use TAB)
+  [contenteditable] {
+    min-width: 1em;
+    // In Firefox if you put the caret in a span and then delete char by char you can get to a point where the content is empty.
+    // Even if we force an inline-block, if it is empty it loose its height. So we force a pseudo element as an invisible separator for this specific case.
+    &:empty::before {
+      content: "\2063";
+      display: inline-block;
+      position: relative;
     }
   }
 
@@ -316,12 +338,24 @@
     outline: none;
   }
 
+  // selectable elements
   #main-wysiwyg-area:not(.isdragging):not(.isdraggingimg) {
-    .mce-content-body {
-      .makeSelectable(5px, ~'.selecteditem', 1px);
+    // blocks
+    .editable {
+      .makeSelectable(10px, ~'.selected', 0, ~' .mo-blockselectionhelper');
+
+      .makeEditableHover(10px, ~'.mce-content-body');
+      .makeEditableHover(10px, ~'.selectable-img', ~' .mo-imgselectionhelper:before');
+
     }
+    // texts
+    .mce-content-body {
+      .makeSelectable(5px, ~'.selecteditem', 0);
+      cursor: text;
+    }
+    // images
     .selectable-img {
-      .makeSelectable(5px, ~'.selecteditem', 1px, ~' .mo-imgselectionhelper');
+      .makeSelectable(5px, ~'.selecteditem', 0, ~' .mo-imgselectionhelper:after');
     }
   }
 

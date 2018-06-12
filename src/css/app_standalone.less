@@ -1,7 +1,7 @@
 html { height: initial; overflow-y: initial;}
 .scms_pstbck, .scms_pstbckprcs { display:none;}
 
-@import "../../bower_components/font-awesome/less/font-awesome.less";
+@import "../../node_modules/font-awesome/less/font-awesome.less";
 @import 'fa-rtl.less';
 
 body.cms_rtl > #contextmenu-help {
@@ -10,10 +10,10 @@ direction: rtl;
 
 @import 'style_mosaico.less';
 
-@fa-font-path: "fa/fonts";
+@fa-font-path: "fontawesome";
 
-@import (less) "../../bower_components/toastr/toastr.css";
-@import (less) "../../bower_components/evol-colorpicker/css/evol.colorpicker.css";
+@import (less) "../../node_modules/toastr/toastr.less";
+@import (less) "../../node_modules/evol-colorpicker/css/evol-colorpicker.css";
 
 .cms_rtl .toast-close-button {
   right: auto;

@@ -8,6 +8,16 @@ var tinymce = require("tinymce");
 
 var timeout;
 
+// FOCUSED:
+// TinyMCE 4.0.x - 4.3.9: tinymce.activeEditor.bodyElement.classList.contains('mce-edit-focus');
+// TinyMCE 4.1.x - 4.7+:  tinymce.activeEditor.dom.settings.root_element.classList.contains('mce-edit-focus');
+
+// VISIBLE
+// TinyMCE 4.0.x - 4.1.x: typeof tinymce.activeEditor.theme.panel._visible !== 'undefined' && tinymce.activeEditor.theme.panel._visible && tinymce.activeEditor.theme.panel._fixed;
+// TinyMCE 4.2.x - 4.7+   typeof tinymce.activeEditor.theme.panel.state !== 'undefined' && tinymce.activeEditor.theme.panel.state.get('visible') && tinymce.activeEditor.theme.panel.state.get('fixed');
+
+// Fiddle http://fiddle.tinymce.com/Cdgaab/4
+
 var render = function() {
 
   timeout = undefined;
@@ -25,10 +35,13 @@ var render = function() {
       tinymce.activeEditor.theme.panel.fixed(false);
     }
 
-    tinymce.activeEditor.nodeChanged();
-    tinymce.activeEditor.theme.panel.visible(true);
-    if (tinymce.activeEditor.theme.panel.layoutRect().y <= 40)
-      tinymce.activeEditor.theme.panel.moveBy(0, 40 - tinymce.activeEditor.theme.panel.layoutRect().y);
+    var element = typeof tinymce.activeEditor.bodyElement !== 'undefined' ? tinymce.activeEditor.bodyElement : tinymce.activeEditor.dom.settings.root_element;
+    if (element !== null && typeof element.classList !== 'undefined' && element.classList.contains("mce-edit-focus")) {
+      tinymce.activeEditor.nodeChanged();
+      tinymce.activeEditor.theme.panel.visible(true);
+      if (tinymce.activeEditor.theme.panel.layoutRect().y <= 40)
+        tinymce.activeEditor.theme.panel.moveBy(0, 40 - tinymce.activeEditor.theme.panel.layoutRect().y);
+    }
 
   }
 };

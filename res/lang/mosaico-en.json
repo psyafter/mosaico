@@ -30,8 +30,6 @@
   "Save template": "Save template",
   "Saved model is obsolete": "Saved model is obsolete",
   "<p>The saved model has been created with a previous, non completely compatible version, of the template</p><p>Some content or style in the model <b>COULD BE LOST</b> if you will <b>save</b></p><p>Contact us for more informations!</p>": "<p>The saved model has been created with a previous, non completely compatible version, of the template</p><p>Some content or style in the model <b>COULD BE LOST</b> if you will <b>save</b></p><p>Contact us for more informations!</p>",
-  "Fake image editor": "Fake image editor",
-  "<p>Fake image editor</p>": "<p>Fake image editor</p>",
   "Blocks": "Blocks",
   "Blocks ready to be added to the template": "Blocks ready to be added to the template",
   "Content": "Content",
@@ -86,5 +84,7 @@
   "File upload aborted": "File upload aborted",
   "Failed to resize image": "Failed to resize image",
   "Unexpected upload error": "Unexpected upload error",
-  "Unexpected error listing files": "Unexpected error listing files"
+  "Unexpected error listing files": "Unexpected error listing files",
+  "__current__ of __total__": "__current__ of __total__",
+  "Select from gallery": "Select from gallery"
 }

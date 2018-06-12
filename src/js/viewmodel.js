@@ -47,7 +47,7 @@ function initializeEditor(content, blockDefs, thumbPathConverter, galleryUrl) {
     debug: ko.observable(false),
     contentListeners: ko.observable(0),
     
-    logoPath: 'dist/img/mosaico32.png',
+    logoPath: 'rs/img/mosaico32.png',
     logoUrl: '.',
     logoAlt: 'mosaico'
   };
@@ -475,6 +475,12 @@ function initializeEditor(content, blockDefs, thumbPathConverter, galleryUrl) {
     viewModel.galleryRecent.unshift(img);
     // select recent gallery tab
     viewModel.selectedImageTab(0);
+  };
+
+  // you can ovverride this method if you want to browse images using an external tool
+  // if you call _src(yourSrc) you will set a new source for the image.
+  viewModel.selectImage = function(_src) {
+    viewModel.showGallery(true);
   };
 
   viewModel.dialog = function(selector, options) {

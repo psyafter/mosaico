@@ -30,8 +30,6 @@
   "Save template": "שמור תבנית",
   "Saved model is obsolete": "תבנית שמורה מיושנת",
   "<p>The saved model has been created with a previous, non completely compatible version, of the template</p><p>Some content or style in the model <b>COULD BE LOST</b> if you will <b>save</b></p><p>Contact us for more informations!</p>": "<p>תבנית שמורה נוצרה עם גרסת התבנית קודמת, שאינה תואמת לחלוטין </p><p>בלחיצה על <b>שמירה</b> תוכן וסגנון <b>יכולים ללכת לאיבוד</b></p><p>פנה לתמיכה טכנית!</p>",
-  "Fake image editor": "Fake image editor",
-  "<p>Fake image editor</p>": "<p>Fake image editor</p>",
   "Blocks": "בלוקים",
   "Blocks ready to be added to the template": "בלוקים מוכנים להוספה לתבנית",
   "Content": "תוכן",
