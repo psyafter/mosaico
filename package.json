@@ -74,7 +74,6 @@
     "mockery": "2.0.0",
     "morgan": "1.7.0",
     "nodemailer": "2.6.4",
-    //"phantomjs-prebuilt": "2.1.13",
     "uglifyify": "3.0.3",
     "watchify": "3.7.0"
   },
