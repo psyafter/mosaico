@@ -45,8 +45,8 @@ module.exports = function(grunt) {
         files: {
           "build/mosaico.css": "src/css/app_standalone.less",
           "build/mosaico-material.css": "src/css/app_standalone_material.less",
-          "dist/mosaico.css": "src/css/app_standalone.less",
-          "dist/mosaico-material.css": "src/css/app_standalone_material.less"
+          "dist/rs/mosaico.css": "src/css/app_standalone.less",
+          "dist/rs/mosaico-material.css": "src/css/app_standalone_material.less"
         }
       }
     },
