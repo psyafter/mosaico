@@ -353,10 +353,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('js', ['combineKOTemplates', 'browserify'/*, 'exorcise'*/]);
   grunt.registerTask('css', ['less', 'postcss']);
-  grunt.registerTask('server', ['express', 'watch', 'keepalive']);
+  //grunt.registerTask('server', ['express', 'watch', 'keepalive']);
   grunt.registerTask('deps', ['copy', 'uglify', 'cssmin']);
   grunt.registerTask('build', ['googlefonts', 'deps', 'jshint', 'js', 'css']);
-  grunt.registerTask('default', ['build', 'server'/*, 'server'*/]);
+  grunt.registerTask('default', ['build'/*, 'server'*/]);
   grunt.registerTask('test', ['jasmine_node']);
   grunt.registerTask('dist', ['check_licenses', 'build', 'test', 'compress']);
 
